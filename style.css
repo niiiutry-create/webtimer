@@ -1,0 +1,232 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  color: #e0e0ff;
+}
+
+/* タブ */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.tab {
+  padding: 10px 28px;
+  border: 2px solid #444;
+  background: transparent;
+  color: #aaa;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: #6c63ff;
+  border-color: #6c63ff;
+  color: #fff;
+}
+
+.tab:hover:not(.active) {
+  border-color: #6c63ff;
+  color: #ccc;
+}
+
+/* パネル */
+.panel {
+  background: #16213e;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 時間表示 */
+.display {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+/* ボタン */
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.btn.start {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.btn.start:hover {
+  background: #574fd6;
+}
+
+.btn.start.running {
+  background: #e74c3c;
+}
+
+.btn.start.running:hover {
+  background: #c0392b;
+}
+
+.btn.reset {
+  background: #2d2d44;
+  color: #ccc;
+}
+
+.btn.reset:hover {
+  background: #3d3d5c;
+}
+
+.btn.lap {
+  background: #2d2d44;
+  color: #ccc;
+}
+
+.btn.lap:hover {
+  background: #3d3d5c;
+}
+
+/* ラップ */
+.laps {
+  max-height: 160px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.laps:empty {
+  display: none;
+}
+
+.lap-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-bottom: 1px solid #2d2d44;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.lap-item:first-child {
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+/* カウントダウン入力 */
+.input-area {
+  margin-bottom: 30px;
+}
+
+.time-inputs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.time-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-input-group input {
+  width: 80px;
+  padding: 12px 8px;
+  font-size: 2rem;
+  text-align: center;
+  background: #0f3460;
+  border: 2px solid #334;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-input-group input:focus {
+  border-color: #6c63ff;
+}
+
+.time-input-group label {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.separator {
+  font-size: 2rem;
+  color: #666;
+  padding-bottom: 24px;
+}
+
+/* プログレスバー */
+.progress-bar-wrapper {
+  height: 6px;
+  background: #2d2d44;
+  border-radius: 3px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #6c63ff;
+  border-radius: 3px;
+  transition: width 0.5s linear;
+  width: 100%;
+}
+
+/* 終了アニメーション */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.display.finished {
+  animation: flash 0.5s ease-in-out 6;
+  color: #e74c3c;
+}

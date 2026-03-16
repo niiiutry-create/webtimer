@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Web Timer</h1>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('stopwatch')">ストップウォッチ</button>
+    <button class="tab" onclick="switchTab('countdown')">カウントダウン</button>
+  </div>
+
+  <!-- ストップウォッチ -->
+  <div id="stopwatch" class="panel">
+    <div class="display" id="sw-display">00:00.00</div>
+    <div class="laps" id="sw-laps"></div>
+    <div class="controls">
+      <button class="btn start" id="sw-start-btn" onclick="swStartStop()">スタート</button>
+      <button class="btn reset" onclick="swReset()">リセット</button>
+      <button class="btn lap" onclick="swLap()">ラップ</button>
+    </div>
+  </div>
+
+  <!-- カウントダウン -->
+  <div id="countdown" class="panel hidden">
+    <div class="input-area" id="cd-input-area">
+      <div class="time-inputs">
+        <div class="time-input-group">
+          <input type="number" id="cd-hours" min="0" max="99" value="0" placeholder="0">
+          <label>時間</label>
+        </div>
+        <span class="separator">:</span>
+        <div class="time-input-group">
+          <input type="number" id="cd-minutes" min="0" max="59" value="0" placeholder="0">
+          <label>分</label>
+        </div>
+        <span class="separator">:</span>
+        <div class="time-input-group">
+          <input type="number" id="cd-seconds" min="0" max="59" value="0" placeholder="0">
+          <label>秒</label>
+        </div>
+      </div>
+    </div>
+    <div class="display hidden" id="cd-display">00:00:00</div>
+    <div class="progress-bar-wrapper hidden" id="cd-progress-wrapper">
+      <div class="progress-bar" id="cd-progress-bar"></div>
+    </div>
+    <div class="controls">
+      <button class="btn start" id="cd-start-btn" onclick="cdStartStop()">スタート</button>
+      <button class="btn reset" onclick="cdReset()">リセット</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
